@@ -1,10 +1,6 @@
 import { useState } from 'react'
 import './styles.css'
-// test
-
-function test() {
-    return
-}
+import React from 'react'
 
 function Square({ value, onSquareClick }) {
     return (
@@ -43,7 +39,22 @@ export default function Board() {
     return (
         <>
             <div className="status">{status}</div>
-            <div className="board-row">
+            <div
+                style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(3, 1fr)',
+                    width: '90px',
+                }}
+            >
+                {squares.map((itm, idx) => (
+                    <Square
+                        key={idx}
+                        value={itm}
+                        onSquareClick={() => handleClick(idx)}
+                    />
+                ))}
+            </div>
+            {/* <div className="board-row">
                 <Square
                     value={squares[0]}
                     onSquareClick={() => handleClick(0)}
@@ -84,7 +95,7 @@ export default function Board() {
                     value={squares[8]}
                     onSquareClick={() => handleClick(8)}
                 />
-            </div>
+            </div> */}
         </>
     )
 }
